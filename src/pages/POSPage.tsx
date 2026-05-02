@@ -20,15 +20,12 @@ export default function POSPage() {
   const [mobileView,       setMobileView]        = useState<MobileView>('menu')
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  // Inicializar activeCategoryId con el ID real de la primera categoría cuando carguen.
-  // Sin esto, activeCategoryId queda null aunque la primera categoría esté resaltada en UI.
   useEffect(() => {
     if (categories.length > 0 && activeCategoryId === null) {
       setActiveCategoryId(categories[0].id)
     }
   }, [categories, activeCategoryId])
 
-  // Limpiar el timer del toast si el componente se desmonta antes de que expire.
   useEffect(() => {
     return () => {
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current)
@@ -43,7 +40,7 @@ export default function POSPage() {
     if (ok) {
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current)
       setOrderSent(true)
-      setMobileView('menu')  // volver al menú tras enviar
+      setMobileView('menu')
       toastTimerRef.current = setTimeout(() => setOrderSent(false), 2500)
     }
   }
@@ -52,15 +49,15 @@ export default function POSPage() {
     <AppLayout>
       <div className="flex flex-col gap-3 md:flex-row md:h-[calc(100vh-4.5rem)] md:gap-4">
 
-        {/* ── Tabs móvil (solo visible en pantallas pequeñas) ── */}
-        <div className="flex shrink-0 rounded-xl bg-white p-1 shadow-sm ring-1 ring-gray-200 md:hidden">
+        {/* Tabs móvil */}
+        <div className="flex shrink-0 rounded-xl border border-slate-700 bg-slate-900 p-1 md:hidden">
           <button
             type="button"
             onClick={() => setMobileView('menu')}
-            className={`flex-1 rounded-lg py-2 text-sm font-semibold transition-colors ${
+            className={`flex-1 cursor-pointer rounded-lg py-2.5 text-sm font-semibold transition-colors duration-150 ${
               mobileView === 'menu'
                 ? 'bg-orange-500 text-white'
-                : 'text-gray-500 hover:text-gray-700'
+                : 'text-slate-400 hover:text-slate-200'
             }`}
           >
             Menú
@@ -68,25 +65,25 @@ export default function POSPage() {
           <button
             type="button"
             onClick={() => setMobileView('cart')}
-            className={`flex-1 rounded-lg py-2 text-sm font-semibold transition-colors ${
+            className={`flex-1 cursor-pointer rounded-lg py-2.5 text-sm font-semibold transition-colors duration-150 ${
               mobileView === 'cart'
                 ? 'bg-orange-500 text-white'
-                : 'text-gray-500 hover:text-gray-700'
+                : 'text-slate-400 hover:text-slate-200'
             }`}
           >
             Carrito{cart.itemCount > 0 ? ` (${cart.itemCount})` : ''}
           </button>
         </div>
 
-        {/* ── Panel izquierdo: menú ── */}
-        <div className={`${mobileView === 'cart' ? 'hidden md:flex' : 'flex'} flex-1 flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200`}>
+        {/* Panel menú */}
+        <div className={`${mobileView === 'cart' ? 'hidden md:flex' : 'flex'} flex-1 flex-col overflow-hidden rounded-2xl border border-slate-700 bg-slate-900`}>
 
           {/* Tabs de categorías */}
-          <div className="flex shrink-0 gap-1 overflow-x-auto border-b border-gray-100 px-3 py-2">
+          <div className="flex shrink-0 gap-1 overflow-x-auto border-b border-slate-700 px-3 py-2">
             {loading ? (
               <div className="flex items-center gap-2 px-2 py-1">
-                <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-200 border-t-orange-500" />
-                <span className="text-sm text-gray-400">Cargando menú...</span>
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-slate-600 border-t-orange-500" />
+                <span className="text-sm text-slate-500">Cargando menú...</span>
               </div>
             ) : (
               categories.map((cat) => (
@@ -94,10 +91,10 @@ export default function POSPage() {
                   key={cat.id}
                   type="button"
                   onClick={() => setActiveCategoryId(cat.id)}
-                  className={`shrink-0 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
+                  className={`cursor-pointer shrink-0 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors duration-150 min-h-[36px] ${
                     activeCat?.id === cat.id
                       ? 'bg-orange-500 text-white'
-                      : 'text-gray-500 hover:bg-gray-100'
+                      : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'
                   }`}
                 >
                   {cat.name}
@@ -109,13 +106,13 @@ export default function POSPage() {
           {/* Grid de productos */}
           <div className="flex-1 overflow-y-auto p-4">
             {error ? (
-              <p className="text-sm text-red-500">Error al cargar el menú: {error}</p>
+              <p className="text-sm text-red-400">Error al cargar el menú: {error}</p>
             ) : activeCat ? (
               <>
-                <h2 className="mb-3 text-base font-bold text-gray-700">
+                <h2 className="mb-3 text-base font-bold text-slate-300">
                   {activeCat.name}
                 </h2>
-                <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+                <div className="grid grid-cols-2 gap-2.5 md:grid-cols-3">
                   {activeCat.menu_items.map((product) => (
                     <ProductCard
                       key={product.id}
@@ -124,40 +121,39 @@ export default function POSPage() {
                     />
                   ))}
                   {activeCat.menu_items.length === 0 && (
-                    <p className="col-span-3 text-sm text-gray-400">
+                    <p className="col-span-3 text-sm text-slate-500">
                       Sin productos disponibles en esta categoría.
                     </p>
                   )}
                 </div>
               </>
             ) : !loading ? (
-              <p className="text-sm text-gray-400">Sin categorías disponibles.</p>
+              <p className="text-sm text-slate-500">Sin categorías disponibles.</p>
             ) : null}
           </div>
         </div>
 
-        {/* ── Panel derecho: carrito ── */}
-        {/* Wrapper controla visibilidad en móvil y ancho en desktop */}
+        {/* Panel carrito */}
         <div className={`${mobileView === 'menu' ? 'hidden md:block' : 'block'} w-full md:w-80 md:shrink-0 lg:w-96`}>
-        <CartPanel
-          customerName={cart.customerName}
-          serviceType={cart.serviceType}
-          kitchenStation={cart.kitchenStation}
-          items={cart.items}
-          total={cart.total}
-          submitting={cart.submitting}
-          submitError={cart.submitError}
-          canSubmit={cart.canSubmit}
-          onNameChange={cart.setCustomerName}
-          onServiceChange={cart.setServiceType}
-          onStationChange={cart.setKitchenStation}
-          onRemoveItem={cart.removeItem}
-          onSubmit={handleSubmit}
-        />
+          <CartPanel
+            customerName={cart.customerName}
+            serviceType={cart.serviceType}
+            kitchenStation={cart.kitchenStation}
+            items={cart.items}
+            total={cart.total}
+            submitting={cart.submitting}
+            submitError={cart.submitError}
+            canSubmit={cart.canSubmit}
+            onNameChange={cart.setCustomerName}
+            onServiceChange={cart.setServiceType}
+            onStationChange={cart.setKitchenStation}
+            onRemoveItem={cart.removeItem}
+            onSubmit={handleSubmit}
+          />
         </div>
       </div>
 
-      {/* ── Modal de personalización ── */}
+      {/* Modal de personalización */}
       {customizingItem && (
         <CustomizationModal
           product={customizingItem}
@@ -169,10 +165,10 @@ export default function POSPage() {
         />
       )}
 
-      {/* ── Toast de confirmación ── */}
+      {/* Toast de confirmación */}
       {orderSent && (
-        <div className="pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-lg">
-          ✓ Orden enviada a cocina
+        <div className="pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-green-900/40">
+          Orden enviada a cocina
         </div>
       )}
     </AppLayout>

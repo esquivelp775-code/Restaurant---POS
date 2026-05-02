@@ -16,9 +16,8 @@ export function CustomerForm({
 }: CustomerFormProps) {
   return (
     <div className="space-y-3">
-      {/* Nombre del cliente */}
       <div>
-        <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-gray-500">
+        <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-400">
           Nombre del cliente
         </label>
         <input
@@ -26,13 +25,12 @@ export function CustomerForm({
           value={customerName}
           onChange={(e) => onNameChange(e.target.value)}
           placeholder="Ej: Juan, Mesa 3, Pedido 1..."
-          className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-100"
+          className="w-full rounded-lg border border-slate-600 bg-slate-700 px-3 py-2.5 text-sm font-medium text-slate-100 placeholder-slate-500 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-colors duration-150"
         />
       </div>
 
-      {/* Tipo de servicio */}
       <div>
-        <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-gray-500">
+        <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-400">
           Tipo de servicio
         </label>
         <div className="grid grid-cols-2 gap-2">
@@ -41,12 +39,12 @@ export function CustomerForm({
               key={type}
               type="button"
               onClick={() => onServiceChange(type)}
-              className={`rounded-lg border-2 py-2.5 text-sm font-semibold transition-all ${
+              className={`cursor-pointer rounded-lg border-2 py-3 text-sm font-semibold transition-all duration-150 min-h-[44px] ${
                 serviceType === type
                   ? type === 'comer_aqui'
-                    ? 'border-orange-400 bg-orange-50 text-orange-700'
-                    : 'border-sky-400 bg-sky-50 text-sky-700'
-                  : 'border-gray-200 bg-white text-gray-500 hover:border-gray-300'
+                    ? 'border-orange-500 bg-orange-500/10 text-orange-400'
+                    : 'border-sky-500 bg-sky-500/10 text-sky-400'
+                  : 'border-slate-600 bg-slate-800 text-slate-400 hover:border-slate-500 hover:text-slate-300'
               }`}
             >
               {SERVICE_TYPE_LABELS[type]}

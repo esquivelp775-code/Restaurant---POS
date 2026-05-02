@@ -44,11 +44,10 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <nav className="flex items-center justify-between bg-gray-900 px-6 py-3 shadow-lg">
-        {/* Logo + Links */}
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <nav className="flex items-center justify-between border-b border-slate-800 bg-slate-900 px-6 py-3">
         <div className="flex items-center gap-8">
-          <span className="text-lg font-bold text-orange-400">RestaurantOS</span>
+          <span className="text-lg font-bold text-orange-400">Mr. Nacho</span>
           <div className="flex gap-1">
             {links.map((link) => {
               const isActive = location.pathname === link.to
@@ -56,10 +55,10 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                  className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-150 ${
                     isActive
-                      ? 'bg-gray-700 text-white'
-                      : 'text-gray-400 hover:text-white'
+                      ? 'bg-orange-500 text-white'
+                      : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
                   }`}
                 >
                   {link.label}
@@ -69,26 +68,25 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
 
-        {/* Usuario + Salir */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           {profile && (
             <div className="flex items-center gap-2">
-              <span className="text-xs font-medium text-gray-400">
+              <span className="rounded-md bg-slate-800 px-2 py-0.5 text-xs font-medium text-slate-400">
                 {ROLE_LABELS[profile.role]}
               </span>
-              <span className="text-sm text-gray-300">{profile.full_name}</span>
+              <span className="text-sm text-slate-300">{profile.full_name}</span>
             </div>
           )}
           <button
             onClick={handleSignOut}
-            className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+            className="cursor-pointer rounded-md px-3 py-1.5 text-xs text-slate-500 transition-colors duration-150 hover:bg-slate-800 hover:text-slate-300"
           >
             Salir
           </button>
         </div>
       </nav>
 
-      <main className="p-6">{children}</main>
+      <main className="p-5">{children}</main>
     </div>
   )
 }

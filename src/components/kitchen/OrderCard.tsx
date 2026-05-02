@@ -8,25 +8,24 @@ interface OrderCardProps {
   isAdvancing: boolean
 }
 
-// Estilos visuales por estado
 const STATUS_STYLES: Record<string, {
   border:     string
   header:     string
   headerText: string
 }> = {
   pending: {
-    border:     'border-amber-400',
-    header:     'bg-amber-400',
-    headerText: 'text-amber-900',
+    border:     'border-amber-500/60',
+    header:     'bg-amber-500',
+    headerText: 'text-amber-950',
   },
   preparing: {
-    border:     'border-blue-400',
-    header:     'bg-blue-500',
+    border:     'border-blue-500/60',
+    header:     'bg-blue-600',
     headerText: 'text-white',
   },
   ready: {
-    border:     'border-green-400',
-    header:     'bg-green-500',
+    border:     'border-green-500/60',
+    header:     'bg-green-600',
     headerText: 'text-white',
   },
 }
@@ -38,12 +37,10 @@ const ADVANCE_LABELS: Partial<Record<OrderStatus, string>> = {
 }
 
 const ADVANCE_COLORS: Partial<Record<OrderStatus, string>> = {
-  pending:   'bg-blue-500 hover:bg-blue-600',
-  preparing: 'bg-green-500 hover:bg-green-600',
-  ready:     'bg-purple-600 hover:bg-purple-700',
+  pending:   'bg-blue-600 hover:bg-blue-500',
+  preparing: 'bg-green-600 hover:bg-green-500',
+  ready:     'bg-purple-600 hover:bg-purple-500',
 }
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
 
 function formatTime(dateStr: string): string {
   return new Date(dateStr).toLocaleTimeString('es', {
@@ -62,31 +59,19 @@ function getElapsed(dateStr: string): { text: string; urgent: boolean; warning: 
   }
 }
 
-// Convierte las modificaciones en líneas de texto para mostrar en KDS
 function buildModLines(item: KitchenOrder['order_items'][number]): string[] {
   const lines: string[] = []
   const mod = item.modifications
-
   if (!mod) return lines
-
-  mod.removed_groups?.forEach((g) => {
-    lines.push(`SIN ${g.charAt(0).toUpperCase() + g.slice(1)}`)
-  })
-  mod.removed_subitems?.forEach((s) => {
-    lines.push(`SIN ${INGREDIENT_LABELS[s] ?? s}`)
-  })
-  mod.removed_standalone?.forEach((s) => {
-    lines.push(`SIN ${INGREDIENT_LABELS[s] ?? s}`)
-  })
+  mod.removed_groups?.forEach((g)    => lines.push(`SIN ${g.charAt(0).toUpperCase() + g.slice(1)}`))
+  mod.removed_subitems?.forEach((s)  => lines.push(`SIN ${INGREDIENT_LABELS[s] ?? s}`))
+  mod.removed_standalone?.forEach((s) => lines.push(`SIN ${INGREDIENT_LABELS[s] ?? s}`))
   mod.extras?.forEach((e) => {
     const sub = e.subchoice ? ` (${INGREDIENT_LABELS[e.subchoice] ?? e.subchoice})` : ''
     lines.push(`CON ${e.name}${sub}`)
   })
-
   return lines
 }
-
-// ─── Componente ───────────────────────────────────────────────────────────────
 
 export function OrderCard({ order, onAdvance, isAdvancing }: OrderCardProps) {
   const styles     = STATUS_STYLES[order.status] ?? STATUS_STYLES.pending
@@ -98,19 +83,18 @@ export function OrderCard({ order, onAdvance, isAdvancing }: OrderCardProps) {
     ? 'text-red-200 font-bold'
     : elapsed.warning
       ? 'text-amber-100 font-semibold'
-      : 'text-white/70'
+      : 'text-white/60'
 
   return (
     <div
       className={`
-        flex flex-col rounded-xl border-2 bg-white shadow-md overflow-hidden
-        transition-shadow hover:shadow-lg
+        flex flex-col rounded-xl border-2 bg-slate-900 shadow-lg overflow-hidden
+        transition-shadow duration-150 hover:shadow-xl
         ${styles.border}
       `}
     >
-      {/* ── Header: cliente + tiempo ── */}
+      {/* Header */}
       <div className={`px-4 py-3 ${styles.header}`}>
-        {/* Nombre del cliente — identificador principal */}
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1 min-w-0">
             <p className={`text-xl font-black leading-tight truncate ${styles.headerText}`}>
@@ -127,27 +111,25 @@ export function OrderCard({ order, onAdvance, isAdvancing }: OrderCardProps) {
         </div>
       </div>
 
-      {/* ── Body: productos con modificaciones ── */}
+      {/* Body */}
       <div className="flex-1 px-4 py-3">
         {order.order_items.length === 0 ? (
-          <p className="text-xs italic text-gray-400">Sin ítems</p>
+          <p className="text-xs italic text-slate-500">Sin ítems</p>
         ) : (
           <ul className="space-y-3">
             {order.order_items.map((item) => {
               const modLines = buildModLines(item)
               return (
                 <li key={item.id}>
-                  {/* Producto */}
                   <div className="flex items-start gap-2.5">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-800 text-xs font-bold text-white">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-700 text-xs font-bold text-slate-200">
                       {item.quantity}
                     </span>
-                    <span className="text-sm font-semibold text-gray-800 leading-tight">
+                    <span className="text-sm font-semibold text-slate-100 leading-tight">
                       {item.menu_items.name}
                     </span>
                   </div>
 
-                  {/* Modificaciones */}
                   {modLines.length > 0 && (
                     <ul className="ml-8 mt-1 space-y-0.5">
                       {modLines.map((line, i) => (
@@ -155,10 +137,10 @@ export function OrderCard({ order, onAdvance, isAdvancing }: OrderCardProps) {
                           key={i}
                           className={`text-xs font-medium ${
                             line.startsWith('SIN')
-                              ? 'text-red-600'
+                              ? 'text-red-400'
                               : line.startsWith('CON')
-                                ? 'text-blue-600'
-                                : 'text-amber-700 italic'
+                                ? 'text-blue-400'
+                                : 'text-amber-400 italic'
                           }`}
                         >
                           {line}
@@ -167,9 +149,8 @@ export function OrderCard({ order, onAdvance, isAdvancing }: OrderCardProps) {
                     </ul>
                   )}
 
-                  {/* Nota libre del ítem */}
                   {item.modifications?.notes && (
-                    <p className="ml-8 mt-1 text-xs italic text-amber-700">
+                    <p className="ml-8 mt-1 text-xs italic text-amber-400">
                       "{item.modifications.notes}"
                     </p>
                   )}
@@ -179,10 +160,9 @@ export function OrderCard({ order, onAdvance, isAdvancing }: OrderCardProps) {
           </ul>
         )}
 
-        {/* Nota general de la orden */}
         {order.notes && (
-          <div className="mt-3 rounded-md bg-amber-50 px-2.5 py-1.5 ring-1 ring-amber-200">
-            <p className="text-xs italic text-amber-800">
+          <div className="mt-3 rounded-md bg-amber-500/10 px-2.5 py-1.5 ring-1 ring-amber-500/30">
+            <p className="text-xs italic text-amber-300">
               <span className="not-italic font-medium">Nota: </span>
               {order.notes}
             </p>
@@ -190,19 +170,19 @@ export function OrderCard({ order, onAdvance, isAdvancing }: OrderCardProps) {
         )}
       </div>
 
-      {/* ── Footer: folio + acción ── */}
-      <div className="border-t border-gray-100 px-4 py-2.5 bg-gray-50">
+      {/* Footer */}
+      <div className="border-t border-slate-800 px-4 py-3 bg-slate-950/40">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-mono text-gray-400">#{folio}</span>
+          <span className="text-xs font-mono text-slate-600">#{folio}</span>
 
           {nextStatus ? (
             <button
               onClick={() => onAdvance(order.id, order.status as OrderStatus)}
               disabled={isAdvancing}
               className={`
-                rounded-lg px-3 py-1.5 text-xs font-semibold text-white
-                transition-all active:scale-95 disabled:cursor-not-allowed disabled:opacity-50
-                ${ADVANCE_COLORS[order.status as OrderStatus] ?? 'bg-gray-500 hover:bg-gray-600'}
+                cursor-pointer rounded-lg px-4 py-2 text-xs font-semibold text-white min-h-[36px]
+                transition-all duration-150 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50
+                ${ADVANCE_COLORS[order.status as OrderStatus] ?? 'bg-slate-600 hover:bg-slate-500'}
               `}
             >
               {isAdvancing ? 'Guardando...' : ADVANCE_LABELS[order.status as OrderStatus]}
