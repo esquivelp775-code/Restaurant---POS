@@ -1,4 +1,4 @@
-import { AppLayout } from '../components/layout/AppLayout'
+﻿import { AppLayout } from '../components/layout/AppLayout'
 import { DisplayOrderCard } from '../components/kitchen/DisplayOrderCard'
 import { useActiveOrders } from '../hooks/useActiveOrders'
 import type { KitchenStation } from '../types/app.types'
@@ -33,7 +33,7 @@ function StationColumn({ station }: { station: KitchenStation }) {
       <div className="flex-1 overflow-y-auto">
         {loading ? (
           <div className="flex h-40 items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-orange-500" />
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-red-500" />
           </div>
         ) : orders.length === 0 ? (
           <div className="flex h-40 items-center justify-center rounded-2xl border-2 border-dashed border-gray-200">

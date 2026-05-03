@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
 type MobileView = 'menu' | 'cart'
 import { AppLayout } from '../components/layout/AppLayout'
 import { ProductCard } from '../components/pos/ProductCard'
@@ -56,7 +56,7 @@ export default function POSPage() {
             onClick={() => setMobileView('menu')}
             className={`flex-1 cursor-pointer rounded-lg py-2.5 text-sm font-semibold transition-colors duration-150 ${
               mobileView === 'menu'
-                ? 'bg-orange-500 text-white'
+                ? 'bg-red-500 text-white'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -67,7 +67,7 @@ export default function POSPage() {
             onClick={() => setMobileView('cart')}
             className={`flex-1 cursor-pointer rounded-lg py-2.5 text-sm font-semibold transition-colors duration-150 ${
               mobileView === 'cart'
-                ? 'bg-orange-500 text-white'
+                ? 'bg-red-500 text-white'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -82,7 +82,7 @@ export default function POSPage() {
           <div className="flex shrink-0 gap-1 overflow-x-auto border-b border-slate-700 px-3 py-2">
             {loading ? (
               <div className="flex items-center gap-2 px-2 py-1">
-                <div className="h-4 w-4 animate-spin rounded-full border-2 border-slate-600 border-t-orange-500" />
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-slate-600 border-t-red-500" />
                 <span className="text-sm text-slate-500">Cargando menú...</span>
               </div>
             ) : (
@@ -93,7 +93,7 @@ export default function POSPage() {
                   onClick={() => setActiveCategoryId(cat.id)}
                   className={`cursor-pointer shrink-0 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors duration-150 min-h-[36px] ${
                     activeCat?.id === cat.id
-                      ? 'bg-orange-500 text-white'
+                      ? 'bg-red-500 text-white'
                       : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'
                   }`}
                 >

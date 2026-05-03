@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+﻿import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import type { UserRole } from '../../types/app.types'
 
@@ -47,7 +47,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <nav className="flex items-center justify-between border-b border-slate-800 bg-slate-900 px-6 py-3">
         <div className="flex items-center gap-8">
-          <span className="text-lg font-bold text-orange-400">Mr. Nacho</span>
+          <span className="text-lg font-bold text-yellow-400">Mr. Nacho</span>
           <div className="flex gap-1">
             {links.map((link) => {
               const isActive = location.pathname === link.to
@@ -57,7 +57,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                   to={link.to}
                   className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-150 ${
                     isActive
-                      ? 'bg-orange-500 text-white'
+                      ? 'bg-red-500 text-white'
                       : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
                   }`}
                 >

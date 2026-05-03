@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom'
+﻿import { useSearchParams } from 'react-router-dom'
 import { AppLayout } from '../components/layout/AppLayout'
 import { KitchenBoard } from '../components/kitchen/KitchenBoard'
 import { useActiveOrders } from '../hooks/useActiveOrders'
@@ -42,7 +42,7 @@ export default function KitchenPage() {
                 key={st}
                 type="button"
                 onClick={() => setSearchParams({ station: st })}
-                className="w-44 rounded-2xl bg-white px-6 py-8 text-center shadow-md ring-1 ring-gray-200 transition-all hover:ring-2 hover:ring-orange-400 hover:shadow-lg active:scale-95"
+                className="w-44 rounded-2xl bg-white px-6 py-8 text-center shadow-md ring-1 ring-gray-200 transition-all hover:ring-2 hover:ring-red-400 hover:shadow-lg active:scale-95"
               >
                 <div className="text-4xl mb-3">🍳</div>
                 <span className="text-base font-bold text-gray-800">
@@ -65,7 +65,7 @@ export default function KitchenPage() {
           <div>
             <div className="flex items-center gap-3">
               <h1 className="text-2xl font-bold text-gray-800">Kitchen Display</h1>
-              <span className="rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-orange-700">
+              <span className="rounded-full bg-red-100 px-3 py-1 text-sm font-semibold text-red-700">
                 {KITCHEN_STATION_LABELS[station]}
               </span>
             </div>
@@ -110,7 +110,7 @@ export default function KitchenPage() {
         <div className="flex-1 overflow-y-auto">
           {loading ? (
             <div className="flex h-full items-center justify-center">
-              <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-orange-500" />
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-red-500" />
             </div>
           ) : (
             <KitchenBoard

@@ -1,4 +1,4 @@
-import { AppLayout } from '../components/layout/AppLayout'
+﻿import { AppLayout } from '../components/layout/AppLayout'
 import { ControlOrderCard } from '../components/kitchen/ControlOrderCard'
 import { useActiveOrders } from '../hooks/useActiveOrders'
 import type { KitchenStation } from '../types/app.types'
@@ -27,7 +27,7 @@ function StationSection({ station }: { station: KitchenStation }) {
             {KITCHEN_STATION_LABELS[station]}
           </h2>
           {orders.length > 0 && (
-            <span className="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-semibold text-orange-700">
+            <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold text-red-700">
               {orders.length}
             </span>
           )}
@@ -48,7 +48,7 @@ function StationSection({ station }: { station: KitchenStation }) {
       {/* Órdenes */}
       {loading ? (
         <div className="flex h-24 items-center justify-center">
-          <div className="h-6 w-6 animate-spin rounded-full border-4 border-gray-200 border-t-orange-500" />
+          <div className="h-6 w-6 animate-spin rounded-full border-4 border-gray-200 border-t-red-500" />
         </div>
       ) : orders.length === 0 ? (
         <div className="flex h-24 items-center justify-center rounded-2xl border-2 border-dashed border-gray-200">

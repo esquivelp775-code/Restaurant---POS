@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+﻿import { useState, useEffect, useCallback } from 'react'
 import { AppLayout } from '../components/layout/AppLayout'
 import {
   getAdminCategories,
@@ -127,7 +127,7 @@ function ProductsTab() {
   if (loading && categories.length === 0) {
     return (
       <div className="flex h-48 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-orange-500" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-red-500" />
       </div>
     )
   }
@@ -151,13 +151,13 @@ function ProductsTab() {
             {allItems.map((item) => {
               const isEditing = editingId === item.id
               return (
-                <tr key={item.id} className={isEditing ? 'bg-orange-50' : 'hover:bg-gray-50'}>
+                <tr key={item.id} className={isEditing ? 'bg-red-50' : 'hover:bg-gray-50'}>
                   <td className="px-4 py-3">
                     {isEditing ? (
                       <input
                         value={editName}
                         onChange={(e) => setEditName(e.target.value)}
-                        className="w-full rounded-lg border border-orange-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                        className="w-full rounded-lg border border-red-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-red-400"
                       />
                     ) : (
                       <span className={`font-medium ${item.is_available ? 'text-gray-800' : 'text-gray-400 line-through'}`}>
@@ -170,7 +170,7 @@ function ProductsTab() {
                       <select
                         value={editCategoryId}
                         onChange={(e) => setEditCategoryId(e.target.value)}
-                        className="rounded-lg border border-orange-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                        className="rounded-lg border border-red-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-red-400"
                       >
                         {categories.map((cat) => (
                           <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -188,7 +188,7 @@ function ProductsTab() {
                         min="0"
                         step="1"
                         onChange={(e) => setEditPrice(e.target.value)}
-                        className="w-24 rounded-lg border border-orange-300 px-2 py-1 text-right text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                        className="w-24 rounded-lg border border-red-300 px-2 py-1 text-right text-sm focus:outline-none focus:ring-2 focus:ring-red-400"
                       />
                     ) : (
                       <span className="font-semibold text-gray-800">${item.price}</span>
@@ -208,7 +208,7 @@ function ProductsTab() {
                           type="button"
                           onClick={() => saveEdit(item.id)}
                           disabled={saving}
-                          className="rounded-lg bg-orange-500 px-3 py-1 text-xs font-semibold text-white hover:bg-orange-600 disabled:opacity-50"
+                          className="rounded-lg bg-red-500 px-3 py-1 text-xs font-semibold text-white hover:bg-red-600 disabled:opacity-50"
                         >
                           {saving ? '...' : 'Guardar'}
                         </button>
@@ -289,7 +289,7 @@ function UsersTab() {
   if (loading && profiles.length === 0) {
     return (
       <div className="flex h-48 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-orange-500" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-red-500" />
       </div>
     )
   }
@@ -322,7 +322,7 @@ function UsersTab() {
                       value={p.role}
                       disabled={isSaving}
                       onChange={(e) => handleUpdate(p.id, { role: e.target.value as UserRole })}
-                      className="rounded-lg border border-gray-200 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 disabled:opacity-50"
+                      className="rounded-lg border border-gray-200 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-red-400 disabled:opacity-50"
                     >
                       {ROLE_OPTIONS.map((opt) => (
                         <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -389,7 +389,7 @@ function CategoriesTab() {
   if (loading && categories.length === 0) {
     return (
       <div className="flex h-48 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-orange-500" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-red-500" />
       </div>
     )
   }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+﻿import { useState, useEffect, useCallback } from 'react'
 import { AppLayout } from '../components/layout/AppLayout'
 import { getDayOrders, closeOrder } from '../services/orders.service'
 import { INGREDIENT_LABELS } from '../constants/menu'
@@ -148,7 +148,7 @@ export default function HistoryPage() {
         {/* ── Lista de órdenes ── */}
         {loading && orders.length === 0 ? (
           <div className="flex h-48 items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-orange-500" />
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-red-500" />
           </div>
         ) : orders.length === 0 ? (
           <div className="flex h-48 items-center justify-center rounded-2xl border-2 border-dashed border-gray-200">

@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom'
+﻿import { Navigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import type { UserRole } from '../../types/app.types'
 import { ROLE_HOME } from '../../types/app.types'
@@ -15,7 +15,7 @@ export function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) 
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center bg-gray-950">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-700 border-t-orange-500" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-700 border-t-red-500" />
       </div>
     )
   }
