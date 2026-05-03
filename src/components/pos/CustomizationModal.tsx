@@ -130,10 +130,10 @@ export function CustomizationModal({
               {extrasTotal > 0 && (
                 <>
                   <span className="text-slate-600">+</span>
-                  <span className="text-yellow-400">+${extrasTotal} extras</span>
+                  <span className="text-yellow-200">+${extrasTotal} extras</span>
                 </>
               )}
-              <span className="ml-1 font-bold text-yellow-400">=&nbsp;${finalPrice}</span>
+              <span className="ml-1 font-bold text-yellow-200">=&nbsp;${finalPrice}</span>
             </div>
           </div>
           <button
@@ -170,7 +170,7 @@ export function CustomizationModal({
                         onClick={() => toggleGroup(groupId)}
                         className={`flex w-full cursor-pointer items-center justify-between rounded-lg px-2 py-1.5 text-sm font-semibold transition-colors duration-150 min-h-[36px] ${
                           isRemoved
-                            ? 'bg-red-500/10 text-yellow-400'
+                            ? 'bg-rose-300/10 text-yellow-200'
                             : 'text-slate-300 hover:bg-slate-700'
                         }`}
                       >
@@ -191,7 +191,7 @@ export function CustomizationModal({
                                 onClick={() => toggleSubitem(groupId, subitem)}
                                 className={`cursor-pointer rounded-full border px-2.5 py-1 text-xs font-medium transition-colors duration-150 min-h-[28px] ${
                                   isSubRemoved
-                                    ? 'border-red-500/40 bg-red-500/10 text-yellow-400 line-through'
+                                    ? 'border-rose-300/40 bg-rose-300/10 text-yellow-200 line-through'
                                     : 'border-slate-600 bg-slate-700 text-slate-300 hover:border-slate-500'
                                 }`}
                               >
@@ -216,7 +216,7 @@ export function CustomizationModal({
                           onClick={() => toggleStandalone(item)}
                           className={`cursor-pointer rounded-full border px-3 py-1.5 text-sm font-medium transition-colors duration-150 min-h-[36px] ${
                             isRemoved
-                              ? 'border-red-500/40 bg-red-500/10 text-yellow-400 line-through'
+                              ? 'border-rose-300/40 bg-rose-300/10 text-yellow-200 line-through'
                               : 'border-slate-600 bg-slate-800 text-slate-300 hover:border-slate-500'
                           }`}
                         >
@@ -247,12 +247,12 @@ export function CustomizationModal({
                       onClick={() => toggleExtra(extra)}
                       className={`flex w-full cursor-pointer items-center justify-between rounded-xl border px-3 py-3 text-sm font-medium transition-all duration-150 min-h-[44px] ${
                         isActive
-                          ? 'border-red-500/50 bg-red-500/10 text-yellow-400'
+                          ? 'border-rose-300/50 bg-rose-300/10 text-yellow-200'
                           : 'border-slate-600 bg-slate-800 text-slate-300 hover:border-slate-500'
                       }`}
                     >
                       <span>{extra.name}</span>
-                      <span className={`font-semibold ${isActive ? 'text-yellow-400' : 'text-slate-500'}`}>
+                      <span className={`font-semibold ${isActive ? 'text-yellow-200' : 'text-slate-500'}`}>
                         +${extra.price}
                       </span>
                     </button>
@@ -266,7 +266,7 @@ export function CustomizationModal({
                             onClick={() => setExtraSubchoice(extra.id, choice)}
                             className={`cursor-pointer rounded-full border px-3 py-1 text-xs font-medium transition-colors duration-150 ${
                               selected?.subchoice === choice
-                                ? 'border-red-500/50 bg-red-500/10 text-yellow-400'
+                                ? 'border-rose-300/50 bg-rose-300/10 text-yellow-200'
                                 : 'border-slate-600 bg-slate-800 text-slate-400 hover:border-slate-500'
                             }`}
                           >
@@ -291,7 +291,7 @@ export function CustomizationModal({
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Ej: bien cocida, término medio..."
               rows={2}
-              className="w-full resize-none rounded-xl border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/20 transition-colors duration-150"
+              className="w-full resize-none rounded-xl border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-300/20 transition-colors duration-150"
             />
           </section>
         </div>
@@ -308,7 +308,7 @@ export function CustomizationModal({
           <button
             type="button"
             onClick={handleAddToCart}
-            className="flex-1 cursor-pointer rounded-xl bg-red-500 py-3 text-sm font-bold text-white transition-all duration-150 hover:bg-red-400 active:scale-95 min-h-[44px]"
+            className="flex-1 cursor-pointer rounded-xl bg-rose-300 py-3 text-sm font-bold text-white transition-all duration-150 hover:bg-rose-200 active:scale-95 min-h-[44px]"
           >
             Agregar — ${finalPrice}
           </button>

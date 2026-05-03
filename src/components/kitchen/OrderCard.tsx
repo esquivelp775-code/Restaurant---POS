@@ -1,4 +1,4 @@
-import type { KitchenOrder, OrderStatus } from '../../types/app.types'
+﻿import type { KitchenOrder, OrderStatus } from '../../types/app.types'
 import { KITCHEN_NEXT_STATUS, SERVICE_TYPE_LABELS, SERVICE_TYPE_COLORS } from '../../types/app.types'
 import { INGREDIENT_LABELS } from '../../constants/menu'
 
@@ -137,7 +137,7 @@ export function OrderCard({ order, onAdvance, isAdvancing }: OrderCardProps) {
                           key={i}
                           className={`text-xs font-medium ${
                             line.startsWith('SIN')
-                              ? 'text-red-400'
+                              ? 'text-rose-200'
                               : line.startsWith('CON')
                                 ? 'text-blue-400'
                                 : 'text-amber-400 italic'

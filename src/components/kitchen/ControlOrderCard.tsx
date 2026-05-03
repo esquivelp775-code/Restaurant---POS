@@ -1,4 +1,4 @@
-import type { KitchenOrder, OrderStatus } from '../../types/app.types'
+﻿import type { KitchenOrder, OrderStatus } from '../../types/app.types'
 import { KITCHEN_NEXT_STATUS, SERVICE_TYPE_LABELS, SERVICE_TYPE_COLORS } from '../../types/app.types'
 import { INGREDIENT_LABELS } from '../../constants/menu'
 
@@ -87,7 +87,7 @@ export function ControlOrderCard({ order, onAdvance, isAdvancing }: ControlOrder
           </div>
           <div className="text-right shrink-0">
             <p className="text-xs font-mono text-gray-400">#{folio}</p>
-            <p className={`text-sm font-semibold ${elapsed.urgent ? 'text-red-500' : 'text-gray-500'}`}>
+            <p className={`text-sm font-semibold ${elapsed.urgent ? 'text-rose-300' : 'text-gray-500'}`}>
               {elapsed.text}
             </p>
           </div>
@@ -113,7 +113,7 @@ export function ControlOrderCard({ order, onAdvance, isAdvancing }: ControlOrder
                       <li
                         key={i}
                         className={`text-xs font-medium ${
-                          line.startsWith('SIN') ? 'text-red-600' : 'text-blue-600'
+                          line.startsWith('SIN') ? 'text-rose-300' : 'text-blue-600'
                         }`}
                       >
                         {line}

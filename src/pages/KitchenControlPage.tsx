@@ -27,7 +27,7 @@ function StationSection({ station }: { station: KitchenStation }) {
             {KITCHEN_STATION_LABELS[station]}
           </h2>
           {orders.length > 0 && (
-            <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold text-red-700">
+            <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold text-rose-400">
               {orders.length}
             </span>
           )}
@@ -40,7 +40,7 @@ function StationSection({ station }: { station: KitchenStation }) {
 
       {/* Error */}
       {error && (
-        <div className="mb-2 rounded-lg bg-red-50 px-3 py-2 text-xs text-red-600 ring-1 ring-red-200">
+        <div className="mb-2 rounded-lg bg-red-50 px-3 py-2 text-xs text-rose-300 ring-1 ring-red-200">
           {error}
         </div>
       )}
@@ -48,7 +48,7 @@ function StationSection({ station }: { station: KitchenStation }) {
       {/* Órdenes */}
       {loading ? (
         <div className="flex h-24 items-center justify-center">
-          <div className="h-6 w-6 animate-spin rounded-full border-4 border-gray-200 border-t-red-500" />
+          <div className="h-6 w-6 animate-spin rounded-full border-4 border-gray-200 border-t-rose-300" />
         </div>
       ) : orders.length === 0 ? (
         <div className="flex h-24 items-center justify-center rounded-2xl border-2 border-dashed border-gray-200">

@@ -74,7 +74,7 @@ export function CartPanel({
               onClick={() => onStationChange(st)}
               className={`cursor-pointer rounded-lg border-2 py-3 text-sm font-semibold transition-all duration-150 min-h-[44px] ${
                 kitchenStation === st
-                  ? 'border-red-500 bg-red-500/10 text-yellow-400'
+                  ? 'border-rose-300 bg-rose-300/10 text-yellow-200'
                   : 'border-slate-600 bg-slate-800 text-slate-400 hover:border-slate-500 hover:text-slate-300'
               }`}
             >
@@ -83,7 +83,7 @@ export function CartPanel({
           ))}
         </div>
         {!kitchenStation && (
-          <p className="mt-1.5 text-xs text-yellow-400">Selecciona una estación para continuar</p>
+          <p className="mt-1.5 text-xs text-yellow-200">Selecciona una estación para continuar</p>
         )}
       </div>
 
@@ -104,7 +104,7 @@ export function CartPanel({
                       <span className="text-sm font-semibold text-slate-100 leading-tight">
                         {item.name}
                       </span>
-                      <span className="shrink-0 text-sm font-bold text-yellow-400">
+                      <span className="shrink-0 text-sm font-bold text-yellow-200">
                         ${item.final_price}
                       </span>
                     </div>
@@ -120,7 +120,7 @@ export function CartPanel({
                     type="button"
                     onClick={() => onRemoveItem(item.local_id)}
                     aria-label="Eliminar ítem"
-                    className="mt-0.5 flex h-7 w-7 min-w-[28px] shrink-0 cursor-pointer items-center justify-center rounded-full text-slate-500 transition-colors duration-150 hover:bg-red-500/10 hover:text-yellow-400"
+                    className="mt-0.5 flex h-7 w-7 min-w-[28px] shrink-0 cursor-pointer items-center justify-center rounded-full text-slate-500 transition-colors duration-150 hover:bg-rose-300/10 hover:text-yellow-200"
                   >
                     <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                       <path d="M18 6L6 18M6 6l12 12" />
@@ -136,7 +136,7 @@ export function CartPanel({
       {/* Total y botón */}
       <div className="rounded-2xl border border-slate-700 bg-slate-900 p-4">
         {submitError && (
-          <div className="mb-3 rounded-lg bg-red-500/10 px-3 py-2 text-xs text-yellow-400 ring-1 ring-red-500/30">
+          <div className="mb-3 rounded-lg bg-rose-300/10 px-3 py-2 text-xs text-yellow-200 ring-1 ring-rose-300/30">
             {submitError}
           </div>
         )}

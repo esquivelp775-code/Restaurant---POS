@@ -1,4 +1,4 @@
-import type { KitchenOrder } from '../../types/app.types'
+﻿import type { KitchenOrder } from '../../types/app.types'
 import { SERVICE_TYPE_LABELS, SERVICE_TYPE_COLORS } from '../../types/app.types'
 import { INGREDIENT_LABELS } from '../../constants/menu'
 
@@ -126,7 +126,7 @@ export function DisplayOrderCard({ order }: { order: KitchenOrder }) {
                       <li
                         key={i}
                         className={`text-sm font-semibold ${
-                          line.startsWith('SIN') ? 'text-red-600' : 'text-blue-600'
+                          line.startsWith('SIN') ? 'text-rose-300' : 'text-blue-600'
                         }`}
                       >
                         {line}

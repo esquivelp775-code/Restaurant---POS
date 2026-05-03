@@ -38,7 +38,7 @@ function StatCard({
   return (
     <div className={`rounded-2xl p-4 shadow-sm ring-1 ${accent ? 'bg-red-50 ring-red-200' : 'bg-white ring-gray-200'}`}>
       <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">{label}</p>
-      <p className={`mt-1 text-3xl font-bold ${accent ? 'text-red-600' : 'text-gray-800'}`}>
+      <p className={`mt-1 text-3xl font-bold ${accent ? 'text-rose-300' : 'text-gray-800'}`}>
         {value}
       </p>
       {sub && <p className="mt-0.5 text-xs text-gray-400">{sub}</p>}
@@ -111,7 +111,7 @@ export default function ReportsPage() {
               value={dateStr}
               max={todayStr()}
               onChange={(e) => setDateStr(e.target.value)}
-              className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-400"
+              className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-rose-200"
             />
             <button
               onClick={load}
@@ -125,7 +125,7 @@ export default function ReportsPage() {
 
         {/* ── Error ── */}
         {error && (
-          <div className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600 ring-1 ring-red-200">
+          <div className="rounded-xl bg-red-50 px-4 py-3 text-sm text-rose-300 ring-1 ring-red-200">
             {error}
           </div>
         )}
@@ -133,7 +133,7 @@ export default function ReportsPage() {
         {/* ── Loading skeleton ── */}
         {loading && !report && (
           <div className="flex h-64 items-center justify-center">
-            <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-red-500" />
+            <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-rose-300" />
           </div>
         )}
 
@@ -186,7 +186,7 @@ export default function ReportsPage() {
                         </div>
                         <div className="h-2 w-full overflow-hidden rounded-full bg-gray-100">
                           <div
-                            className="h-full rounded-full bg-red-400 transition-all"
+                            className="h-full rounded-full bg-rose-200 transition-all"
                             style={{ width: `${pct}%` }}
                           />
                         </div>

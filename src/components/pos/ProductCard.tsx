@@ -10,12 +10,12 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
     <button
       type="button"
       onClick={() => onSelect(product)}
-      className="flex w-full cursor-pointer flex-col rounded-xl border border-slate-700 bg-slate-800 p-4 text-left transition-all duration-150 hover:border-red-500 hover:bg-slate-700 active:scale-95 min-h-[72px]"
+      className="flex w-full cursor-pointer flex-col rounded-xl border border-slate-700 bg-slate-800 p-4 text-left transition-all duration-150 hover:border-rose-300 hover:bg-slate-700 active:scale-95 min-h-[72px]"
     >
       <span className="mb-1.5 block text-sm font-semibold leading-tight text-slate-100">
         {product.name}
       </span>
-      <span className="text-base font-bold text-yellow-400">
+      <span className="text-base font-bold text-yellow-200">
         ${product.price}
       </span>
     </button>
