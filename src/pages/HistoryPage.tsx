@@ -140,7 +140,7 @@ export default function HistoryPage() {
 
         {/* ── Error ── */}
         {error && (
-          <div className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-rose-300 ring-1 ring-red-200">
+          <div className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-amber-400 ring-1 ring-red-200">
             {error}
           </div>
         )}
@@ -148,7 +148,7 @@ export default function HistoryPage() {
         {/* ── Lista de órdenes ── */}
         {loading && orders.length === 0 ? (
           <div className="flex h-48 items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-rose-300" />
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-amber-400" />
           </div>
         ) : orders.length === 0 ? (
           <div className="flex h-48 items-center justify-center rounded-2xl border-2 border-dashed border-gray-200">
@@ -225,7 +225,7 @@ export default function HistoryPage() {
                                       key={i}
                                       className={`text-xs ${
                                         line.startsWith('SIN')
-                                          ? 'text-rose-300'
+                                          ? 'text-amber-400'
                                           : line.startsWith('CON')
                                             ? 'text-blue-500'
                                             : 'italic text-gray-400'

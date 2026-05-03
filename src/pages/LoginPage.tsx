@@ -58,7 +58,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* Header */}
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-yellow-200">RestaurantOS</h1>
+          <h1 className="text-3xl font-bold text-amber-200">RestaurantOS</h1>
           <p className="mt-2 text-sm text-gray-500">Inicia sesión para continuar</p>
         </div>
 
@@ -77,7 +77,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
-              className="w-full rounded-lg bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-600 ring-1 ring-gray-700 focus:outline-none focus:ring-2 focus:ring-rose-300"
+              className="w-full rounded-lg bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-600 ring-1 ring-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-400"
               placeholder="correo@restaurante.com"
             />
           </div>
@@ -92,13 +92,13 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               autoComplete="current-password"
-              className="w-full rounded-lg bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-600 ring-1 ring-gray-700 focus:outline-none focus:ring-2 focus:ring-rose-300"
+              className="w-full rounded-lg bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-600 ring-1 ring-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-400"
               placeholder="••••••••"
             />
           </div>
 
           {error && (
-            <div className="mb-4 rounded-lg bg-rose-950 px-4 py-3 text-sm text-yellow-200 ring-1 ring-rose-900">
+            <div className="mb-4 rounded-lg bg-amber-950 px-4 py-3 text-sm text-amber-200 ring-1 ring-amber-900">
               {error}
             </div>
           )}
@@ -106,7 +106,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-rose-300 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-rose-300 disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-lg bg-amber-400 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? 'Ingresando...' : 'Ingresar'}
           </button>

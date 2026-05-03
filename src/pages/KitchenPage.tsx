@@ -42,7 +42,7 @@ export default function KitchenPage() {
                 key={st}
                 type="button"
                 onClick={() => setSearchParams({ station: st })}
-                className="w-44 rounded-2xl bg-white px-6 py-8 text-center shadow-md ring-1 ring-gray-200 transition-all hover:ring-2 hover:ring-rose-200 hover:shadow-lg active:scale-95"
+                className="w-44 rounded-2xl bg-white px-6 py-8 text-center shadow-md ring-1 ring-gray-200 transition-all hover:ring-2 hover:ring-amber-300 hover:shadow-lg active:scale-95"
               >
                 <div className="text-4xl mb-3">🍳</div>
                 <span className="text-base font-bold text-gray-800">
@@ -65,7 +65,7 @@ export default function KitchenPage() {
           <div>
             <div className="flex items-center gap-3">
               <h1 className="text-2xl font-bold text-gray-800">Kitchen Display</h1>
-              <span className="rounded-full bg-red-100 px-3 py-1 text-sm font-semibold text-rose-400">
+              <span className="rounded-full bg-red-100 px-3 py-1 text-sm font-semibold text-amber-400">
                 {KITCHEN_STATION_LABELS[station]}
               </span>
             </div>
@@ -94,7 +94,7 @@ export default function KitchenPage() {
 
         {/* ── Error de carga ── */}
         {error && (
-          <div className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-rose-300 ring-1 ring-red-200">
+          <div className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-amber-400 ring-1 ring-red-200">
             Error al cargar órdenes: {error}. Recarga la página si persiste.
           </div>
         )}
@@ -110,7 +110,7 @@ export default function KitchenPage() {
         <div className="flex-1 overflow-y-auto">
           {loading ? (
             <div className="flex h-full items-center justify-center">
-              <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-rose-300" />
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-amber-400" />
             </div>
           ) : (
             <KitchenBoard

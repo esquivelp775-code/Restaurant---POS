@@ -24,7 +24,7 @@ const STATUS_STYLES: Record<string, {
   },
   ready: {
     border:      'border-green-400',
-    header:      'bg-green-500',
+    header:      'bg-emerald-500',
     headerText:  'text-white',
     statusLabel: 'LISTO',
   },
@@ -126,7 +126,7 @@ export function DisplayOrderCard({ order }: { order: KitchenOrder }) {
                       <li
                         key={i}
                         className={`text-sm font-semibold ${
-                          line.startsWith('SIN') ? 'text-rose-300' : 'text-blue-600'
+                          line.startsWith('SIN') ? 'text-amber-400' : 'text-blue-600'
                         }`}
                       >
                         {line}

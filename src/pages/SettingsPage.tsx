@@ -31,7 +31,7 @@ function Toggle({
       onClick={() => onChange(!checked)}
       disabled={disabled}
       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none disabled:opacity-50 ${
-        checked ? 'bg-green-500' : 'bg-gray-200'
+        checked ? 'bg-emerald-500' : 'bg-gray-200'
       }`}
     >
       <span
@@ -45,7 +45,7 @@ function Toggle({
 
 function ErrorBanner({ msg }: { msg: string }) {
   return (
-    <div className="rounded-xl bg-red-50 px-4 py-3 text-sm text-rose-300 ring-1 ring-red-200">
+    <div className="rounded-xl bg-red-50 px-4 py-3 text-sm text-amber-400 ring-1 ring-red-200">
       {msg}
     </div>
   )
@@ -127,7 +127,7 @@ function ProductsTab() {
   if (loading && categories.length === 0) {
     return (
       <div className="flex h-48 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-rose-300" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-amber-400" />
       </div>
     )
   }
@@ -157,7 +157,7 @@ function ProductsTab() {
                       <input
                         value={editName}
                         onChange={(e) => setEditName(e.target.value)}
-                        className="w-full rounded-lg border border-red-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-rose-200"
+                        className="w-full rounded-lg border border-red-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
                       />
                     ) : (
                       <span className={`font-medium ${item.is_available ? 'text-gray-800' : 'text-gray-400 line-through'}`}>
@@ -170,7 +170,7 @@ function ProductsTab() {
                       <select
                         value={editCategoryId}
                         onChange={(e) => setEditCategoryId(e.target.value)}
-                        className="rounded-lg border border-red-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-rose-200"
+                        className="rounded-lg border border-red-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
                       >
                         {categories.map((cat) => (
                           <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -188,7 +188,7 @@ function ProductsTab() {
                         min="0"
                         step="1"
                         onChange={(e) => setEditPrice(e.target.value)}
-                        className="w-24 rounded-lg border border-red-300 px-2 py-1 text-right text-sm focus:outline-none focus:ring-2 focus:ring-rose-200"
+                        className="w-24 rounded-lg border border-red-300 px-2 py-1 text-right text-sm focus:outline-none focus:ring-2 focus:ring-amber-300"
                       />
                     ) : (
                       <span className="font-semibold text-gray-800">${item.price}</span>
@@ -208,7 +208,7 @@ function ProductsTab() {
                           type="button"
                           onClick={() => saveEdit(item.id)}
                           disabled={saving}
-                          className="rounded-lg bg-rose-300 px-3 py-1 text-xs font-semibold text-white hover:bg-rose-300 disabled:opacity-50"
+                          className="rounded-lg bg-amber-400 px-3 py-1 text-xs font-semibold text-white hover:bg-amber-400 disabled:opacity-50"
                         >
                           {saving ? '...' : 'Guardar'}
                         </button>
@@ -289,7 +289,7 @@ function UsersTab() {
   if (loading && profiles.length === 0) {
     return (
       <div className="flex h-48 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-rose-300" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-amber-400" />
       </div>
     )
   }
@@ -322,7 +322,7 @@ function UsersTab() {
                       value={p.role}
                       disabled={isSaving}
                       onChange={(e) => handleUpdate(p.id, { role: e.target.value as UserRole })}
-                      className="rounded-lg border border-gray-200 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-rose-200 disabled:opacity-50"
+                      className="rounded-lg border border-gray-200 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 disabled:opacity-50"
                     >
                       {ROLE_OPTIONS.map((opt) => (
                         <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -389,7 +389,7 @@ function CategoriesTab() {
   if (loading && categories.length === 0) {
     return (
       <div className="flex h-48 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-rose-300" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-amber-400" />
       </div>
     )
   }

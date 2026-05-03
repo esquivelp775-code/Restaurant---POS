@@ -25,7 +25,7 @@ export function CustomerForm({
           value={customerName}
           onChange={(e) => onNameChange(e.target.value)}
           placeholder="Ej: Juan, Mesa 3, Pedido 1..."
-          className="w-full rounded-lg border border-slate-600 bg-slate-700 px-3 py-2.5 text-sm font-medium text-slate-100 placeholder-slate-500 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-300/20 transition-colors duration-150"
+          className="w-full rounded-lg border border-slate-600 bg-slate-700 px-3 py-2.5 text-sm font-medium text-slate-100 placeholder-slate-500 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20 transition-colors duration-150"
         />
       </div>
 
@@ -42,7 +42,7 @@ export function CustomerForm({
               className={`cursor-pointer rounded-lg border-2 py-3 text-sm font-semibold transition-all duration-150 min-h-[44px] ${
                 serviceType === type
                   ? type === 'comer_aqui'
-                    ? 'border-rose-300 bg-rose-300/10 text-rose-200'
+                    ? 'border-amber-400 bg-amber-400/10 text-amber-300'
                     : 'border-sky-500 bg-sky-500/10 text-sky-400'
                   : 'border-slate-600 bg-slate-800 text-slate-400 hover:border-slate-500 hover:text-slate-300'
               }`}

@@ -18,7 +18,7 @@ const ADVANCE_LABEL: Partial<Record<OrderStatus, string>> = {
 
 const ADVANCE_COLOR: Partial<Record<OrderStatus, string>> = {
   pending:   'bg-blue-500 hover:bg-blue-600 active:bg-blue-700',
-  preparing: 'bg-green-500 hover:bg-green-600 active:bg-green-700',
+  preparing: 'bg-emerald-500 hover:bg-emerald-500 active:bg-green-700',
   ready:     'bg-purple-600 hover:bg-purple-700 active:bg-purple-800',
 }
 
@@ -87,7 +87,7 @@ export function ControlOrderCard({ order, onAdvance, isAdvancing }: ControlOrder
           </div>
           <div className="text-right shrink-0">
             <p className="text-xs font-mono text-gray-400">#{folio}</p>
-            <p className={`text-sm font-semibold ${elapsed.urgent ? 'text-rose-300' : 'text-gray-500'}`}>
+            <p className={`text-sm font-semibold ${elapsed.urgent ? 'text-amber-400' : 'text-gray-500'}`}>
               {elapsed.text}
             </p>
           </div>
@@ -113,7 +113,7 @@ export function ControlOrderCard({ order, onAdvance, isAdvancing }: ControlOrder
                       <li
                         key={i}
                         className={`text-xs font-medium ${
-                          line.startsWith('SIN') ? 'text-rose-300' : 'text-blue-600'
+                          line.startsWith('SIN') ? 'text-amber-400' : 'text-blue-600'
                         }`}
                       >
                         {line}

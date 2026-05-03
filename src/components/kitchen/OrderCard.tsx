@@ -25,7 +25,7 @@ const STATUS_STYLES: Record<string, {
   },
   ready: {
     border:     'border-green-500/60',
-    header:     'bg-green-600',
+    header:     'bg-emerald-500',
     headerText: 'text-white',
   },
 }
@@ -38,7 +38,7 @@ const ADVANCE_LABELS: Partial<Record<OrderStatus, string>> = {
 
 const ADVANCE_COLORS: Partial<Record<OrderStatus, string>> = {
   pending:   'bg-blue-600 hover:bg-blue-500',
-  preparing: 'bg-green-600 hover:bg-green-500',
+  preparing: 'bg-emerald-500 hover:bg-emerald-400',
   ready:     'bg-purple-600 hover:bg-purple-500',
 }
 
@@ -137,7 +137,7 @@ export function OrderCard({ order, onAdvance, isAdvancing }: OrderCardProps) {
                           key={i}
                           className={`text-xs font-medium ${
                             line.startsWith('SIN')
-                              ? 'text-rose-200'
+                              ? 'text-amber-300'
                               : line.startsWith('CON')
                                 ? 'text-blue-400'
                                 : 'text-amber-400 italic'

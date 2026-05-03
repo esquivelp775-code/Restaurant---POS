@@ -1,4 +1,4 @@
-import { OrderCard } from './OrderCard'
+﻿import { OrderCard } from './OrderCard'
 import type { KitchenOrder, OrderStatus } from '../../types/app.types'
 
 interface KitchenBoardProps {
@@ -34,7 +34,7 @@ export function KitchenBoard({ orders, onAdvance, advancingId }: KitchenBoardPro
   const summary = [
     { status: 'pending',   label: 'Pendientes',    color: 'bg-amber-500/10 text-amber-400 ring-1 ring-amber-500/30'  },
     { status: 'preparing', label: 'En preparación', color: 'bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/30'    },
-    { status: 'ready',     label: 'Listos',         color: 'bg-green-500/10 text-green-400 ring-1 ring-green-500/30' },
+    { status: 'ready',     label: 'Listos',         color: 'bg-emerald-500/10 text-green-400 ring-1 ring-green-500/30' },
   ].filter(s => counts[s.status])
 
   return (
