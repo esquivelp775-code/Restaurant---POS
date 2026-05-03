@@ -1,4 +1,5 @@
-﻿import { Link, useLocation, useNavigate } from 'react-router-dom'
+﻿import { useState, useEffect } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import type { UserRole } from '../../types/app.types'
 
@@ -37,6 +38,12 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   const navigate  = useNavigate()
   const location  = useLocation()
   const links     = profile ? NAV_LINKS[profile.role] : []
+  const [inverted, setInverted] = useState(() => localStorage.getItem('theme') === 'light')
+
+  useEffect(() => {
+    document.documentElement.style.filter = inverted ? 'invert(1) hue-rotate(180deg)' : ''
+    localStorage.setItem('theme', inverted ? 'light' : 'dark')
+  }, [inverted])
 
   async function handleSignOut() {
     await signOut()
@@ -77,6 +84,18 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               <span className="text-sm text-slate-300">{profile.full_name}</span>
             </div>
           )}
+          <button
+            onClick={() => setInverted(v => !v)}
+            title={inverted ? 'Modo oscuro' : 'Modo claro'}
+            className="cursor-pointer rounded-md px-2 py-1.5 text-slate-500 transition-colors duration-150 hover:bg-slate-800 hover:text-slate-300"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+              {inverted
+                ? <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2Zm0 18V4a8 8 0 0 1 0 16Z"/>
+                : <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z" clipRule="evenodd"/>
+              }
+            </svg>
+          </button>
           <button
             onClick={handleSignOut}
             className="cursor-pointer rounded-md px-3 py-1.5 text-xs text-slate-500 transition-colors duration-150 hover:bg-slate-800 hover:text-slate-300"
