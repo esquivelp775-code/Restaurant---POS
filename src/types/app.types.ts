@@ -142,7 +142,7 @@ export interface KitchenOrder {
 }
 
 // Órdenes que el KDS debe mostrar
-export const ACTIVE_ORDER_STATUSES: OrderStatus[] = ['pending', 'preparing', 'ready']
+export const ACTIVE_ORDER_STATUSES: OrderStatus[] = ['pending', 'preparing', 'ready', 'delivered']
 
 // Estado de la suscripción Realtime
 export type ConnectionStatus = 'connecting' | 'connected' | 'disconnected'
