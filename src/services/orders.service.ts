@@ -149,6 +149,15 @@ export async function closeOrder(orderId: string): Promise<void> {
   if (error) throw new Error(error.message)
 }
 
+export async function cancelOrder(orderId: string): Promise<void> {
+  const { error } = await supabase
+    .from('orders')
+    .update({ status: 'cancelled' })
+    .eq('id', orderId)
+
+  if (error) throw new Error(error.message)
+}
+
 // ─── Historial ────────────────────────────────────────────────────────────────
 
 const HISTORY_SELECT = `

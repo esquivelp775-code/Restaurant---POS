@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect, useCallback } from 'react'
 import { AppLayout } from '../components/layout/AppLayout'
-import { getDayOrders, closeOrder } from '../services/orders.service'
+import { useAuth } from '../contexts/AuthContext'
+import { getDayOrders, closeOrder, cancelOrder } from '../services/orders.service'
 import { INGREDIENT_LABELS } from '../constants/menu'
 import type {
   HistoryOrder,
@@ -66,6 +67,8 @@ export default function HistoryPage() {
   const [filter,      setFilter]      = useState<OrderStatus | null>(null)
   const [expandedId,  setExpandedId]  = useState<string | null>(null)
   const [closingId,   setClosingId]   = useState<string | null>(null)
+  const [cancellingId, setCancellingId] = useState<string | null>(null)
+  const { profile } = useAuth()
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -81,6 +84,19 @@ export default function HistoryPage() {
   }, [filter])
 
   useEffect(() => { load() }, [load])
+
+  async function handleCancel(orderId: string) {
+    if (!confirm('¿Cancelar esta orden?')) return
+    setCancellingId(orderId)
+    try {
+      await cancelOrder(orderId)
+      await load()
+    } catch (err) {
+      console.error('Error al cancelar orden:', err)
+    } finally {
+      setCancellingId(null)
+    }
+  }
 
   async function handleClose(orderId: string) {
     setClosingId(orderId)
@@ -248,9 +264,9 @@ export default function HistoryPage() {
                         </p>
                       )}
 
-                      {/* Botón cerrar cuenta */}
-                      {isActive && (
-                        <div className="mt-4">
+                      {/* Botones de acción */}
+                      {(isActive || order.status === 'delivered') && (
+                        <div className="mt-4 flex gap-2">
                           <button
                             type="button"
                             onClick={() => handleClose(order.id)}
@@ -259,6 +275,16 @@ export default function HistoryPage() {
                           >
                             {closingId === order.id ? 'Cerrando...' : 'Cerrar cuenta'}
                           </button>
+                          {profile?.role === 'admin' && (
+                            <button
+                              type="button"
+                              onClick={() => handleCancel(order.id)}
+                              disabled={cancellingId === order.id}
+                              className="rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-50 transition-colors"
+                            >
+                              {cancellingId === order.id ? 'Cancelando...' : 'Cancelar orden'}
+                            </button>
+                          )}
                         </div>
                       )}
                     </div>
